@@ -24,14 +24,14 @@ function savePage2() {
 function generateLink() {
   const moment = document.getElementById("moment").value;
 
-  localStorage.setItem("moment", moment);
-
   const from = localStorage.getItem("from");
   const to = localStorage.getItem("to");
   const meet = localStorage.getItem("meet");
   const first = localStorage.getItem("first");
 
-  const link = `${window.location.origin}/result.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&meet=${encodeURIComponent(meet)}&first=${encodeURIComponent(first)}&moment=${encodeURIComponent(moment)}`;
+  const base = window.location.origin + window.location.pathname.replace("page3.html", "");
+
+  const link = `${base}result.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&meet=${encodeURIComponent(meet)}&first=${encodeURIComponent(first)}&moment=${encodeURIComponent(moment)}`;
 
   const copy = confirm("Link sudah dibuat!\n\nKlik OK untuk copy link");
 
@@ -40,11 +40,7 @@ function generateLink() {
     alert("Link berhasil di copy!");
   }
 
-  const base = window.location.origin + "/project/";
-
-const link = `${base}result.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&meet=${encodeURIComponent(meet)}&first=${encodeURIComponent(first)}&moment=${encodeURIComponent(moment)}`;
-
-window.location.href = link;
+  window.location.href = link;
 }
 
 // Result page
@@ -75,8 +71,11 @@ function copyLink() {
   const meet = localStorage.getItem("meet");
   const first = localStorage.getItem("first");
 
-  const link = `${window.location.origin}/result.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&meet=${encodeURIComponent(meet)}&first=${encodeURIComponent(first)}&moment=${encodeURIComponent(moment)}`;
+  const base = window.location.origin + window.location.pathname.replace("page3.html", "");
+
+  const link = `${base}result.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&meet=${encodeURIComponent(meet)}&first=${encodeURIComponent(first)}&moment=${encodeURIComponent(moment)}`;
 
   navigator.clipboard.writeText(link);
   alert("Link berhasil di copy!");
+}
 }
