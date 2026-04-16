@@ -40,7 +40,11 @@ function generateLink() {
     alert("Link berhasil di copy!");
   }
 
-  window.location.href = link;
+  const base = window.location.origin + "/romantic-card/";
+
+const link = `${base}result.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&meet=${encodeURIComponent(meet)}&first=${encodeURIComponent(first)}&moment=${encodeURIComponent(moment)}`;
+
+window.location.href = link;
 }
 
 // Result page
