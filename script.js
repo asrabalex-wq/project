@@ -40,7 +40,7 @@ function generateLink() {
     alert("Link berhasil di copy!");
   }
 
-  const base = window.location.origin + "/romantic-card/";
+  const base = window.location.origin + "/project/";
 
 const link = `${base}result.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&meet=${encodeURIComponent(meet)}&first=${encodeURIComponent(first)}&moment=${encodeURIComponent(moment)}`;
 
