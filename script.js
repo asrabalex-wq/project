@@ -61,21 +61,3 @@ if (window.location.pathname.includes("result.html")) {
     Ingat gak momen kita:<br>${moment}
   `;
 }
-
-// Copy link function
-function copyLink() {
-  const moment = document.getElementById("moment").value;
-
-  const from = localStorage.getItem("from");
-  const to = localStorage.getItem("to");
-  const meet = localStorage.getItem("meet");
-  const first = localStorage.getItem("first");
-
-  const base = window.location.origin + window.location.pathname.replace("page3.html", "");
-
-  const link = `${base}result.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&meet=${encodeURIComponent(meet)}&first=${encodeURIComponent(first)}&moment=${encodeURIComponent(moment)}`;
-
-  navigator.clipboard.writeText(link);
-  alert("Link berhasil di copy!");
-}
-}
