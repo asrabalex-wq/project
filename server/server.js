@@ -117,9 +117,12 @@ app.post('/api/upload', upload.array('photos', 50), (req, res) => {
       return res.status(400).json({ error: 'No photos uploaded' });
     }
 
-    const photoUrls = req.files.map(file => `/uploads/${file.filename}`);
+    // Get base URL
+    const baseUrl = process.env.BASE_URL || `http://${req.get('host')}`;
+    const photoUrls = req.files.map(file => `${baseUrl}/uploads/${file.filename}`);
 
     console.log('Files uploaded successfully:', photoUrls);
+    console.log('Using BASE_URL:', baseUrl);
 
     res.json({
       success: true,
@@ -164,10 +167,18 @@ app.post('/api/messages', express.json({ limit: '50mb' }), (req, res) => {
     const messagePath = path.join(messagesDir, `${messageId}.json`);
     fs.writeFileSync(messagePath, JSON.stringify(message, null, 2));
 
+    // Get base URL
+    const baseUrl = process.env.BASE_URL || `http://${req.get('host')}`;
+    const link = `${baseUrl}/message/${messageId}`;
+
+    console.log(`📨 Message created: ${messageId}`);
+    console.log(`🔗 Link: ${link}`);
+    console.log(`📷 Photos: ${photos.length}`);
+
     res.json({
       success: true,
       messageId,
-      link: `${process.env.BASE_URL || 'http://localhost:3000'}/message/${messageId}`
+      link: link
     });
   } catch (error) {
     console.error('Create message error:', error);
@@ -245,10 +256,13 @@ app.use((req, res) => {
 
 // Start server
 app.listen(PORT, () => {
+  const baseUrl = process.env.BASE_URL || `http://localhost:${PORT}`;
+  
   console.log('\n' + '='.repeat(50));
   console.log('🚀 Romantic Message Server Started');
   console.log('='.repeat(50));
   console.log(`📌 Server URL: http://localhost:${PORT}`);
+  console.log(`🌐 Public URL (BASE_URL): ${baseUrl}`);
   console.log(`📁 Upload folder: ${path.join(__dirname, 'uploads')}`);
   console.log(`📁 Messages folder: ${path.join(__dirname, 'messages')}`);
   console.log('\n📍 Available endpoints:');
