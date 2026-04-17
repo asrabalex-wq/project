@@ -3,15 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Result</title>
-  <link rel="stylesheet" href="style.css">
+  <title>💌 Pesan Spesial</title>
+  <link rel="stylesheet" href="result.css">
 </head>
 <body>
 
-<div class="container">
-  <h2>Untuk Kamu ❤️</h2>
+<div class="slide-container" onclick="nextSlide()">
+  <div class="slide active" id="slide"></div>
+</div>
 
-  <p id="resultText"></p>
+<!-- Gallery Container for Photos -->
+<div class="photos-gallery-wrapper" id="photosGalleryWrapper" style="display: none;">
+  <div class="photos-gallery-container" id="photosGallery"></div>
+  <button class="gallery-scroll-btn prev" onclick="scrollGallery(-1)">❮</button>
+  <button class="gallery-scroll-btn next" onclick="scrollGallery(1)">❯</button>
+</div>
+
+<div class="nav-hint" id="navHint">Click atau Tekan →</div>
+<div class="progress" id="progress"></div>
+
+<!-- Action Buttons for Final Slide -->
+<div class="action-buttons" id="actionButtons" style="display: none;">
+  <button class="action-btn reply-btn" id="replyBtn" onclick="replyViaWA()">
+    💬 Balas di WA
+  </button>
+  <button class="action-btn close-btn" id="closeBtn" onclick="closePage()">
+    ✕ Tutup
+  </button>
 </div>
 
 <script src="script.js"></script>

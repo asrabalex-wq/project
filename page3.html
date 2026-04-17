@@ -8,13 +8,24 @@
 </head>
 <body>
 
-<div class="container">
-  <h2>Isi momen berharga untuk kalian.</h2>
+<div class="wrapper">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 25px;">
+      <p style="font-size: 12px; letter-spacing: 1px; opacity: 0.8; margin: 0;">Step 3 / 3</p>
+      <div style="height: 3px; background: linear-gradient(90deg, #667eea, #764ba2); margin-top: 8px; border-radius: 2px; width: 100%;"></div>
+    </div>
 
-  <textarea id="moment" placeholder="Momen berharga..."></textarea>
+    <h2>Isi momen berharga untuk kalian.</h2>
 
-  <button onclick="generateLink()">Generate Link</button>
+    <textarea id="moment" placeholder="Momen berharga..."></textarea>
 
+    <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 15px; border: 1px dashed rgba(255,255,255,0.2);">
+      <p style="font-size: 12px; margin: 0 0 10px 0; opacity: 0.8;">📸 Tambah foto (opsional)</p>
+      <input type="file" id="photos" multiple accept="image/*">
+    </div>
+
+    <button onclick="generateLink()">Generate Link</button>
+  </div>
 </div>
 
 <script src="script.js"></script>
